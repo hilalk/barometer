@@ -16,9 +16,47 @@
         margin: 0;
         padding: 0;
       }
+      * {
+          box-sizing: border-box;
+        }
+      #count {
+        background: #9F0;
+        width: 10%;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        font-size: 64px;
+        margin: 0;
+        border: 3px solid green;
+        border-radius: 5px;
+      }
+
+      .button {
+        background: #09F;
+        width: 5%;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 32px;
+        border: 3px solid blue;
+        border-radius: 5px;
+      }
+
+      .button, #count {
+        float: left;
+      }
+
+      #minus {
+        margin: 25px 2.5% 0 37.5%;
+      }
+
+      #plus {
+        margin: 25px 37.5% 0 2.5%;
+      }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      // This example requires the Places library. Include the libraries=places
+      // This example requires the Places library. Include the libra  ries=places
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
@@ -81,16 +119,34 @@
           position: place.geometry.location
         });
 
+
         google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name);
+          var info = place.vicinity +" | "+ place.name + "| "+ "<p class='button' id='minus'>-</p>"+"<p id='count'>0</p>"+"<p class='button' id='plus'>+</p>";
+          // var address = "address goes here"
+          // infowindow.setContent(place.name);
+          infowindow.setContent(info);
           infowindow.open(map, this);
         });
+
       }
       init();
+      $(document).ready(function() {
+        var counter = 0;
+        $(document).on('click', '#plus', function() {
+          counter++;
+          $("#count").text(counter);
+        });
+
+        $(document).on('click', '#minus', function() {
+          counter--;
+          $("#count").text(counter);
+        });
+      });
     </script>
   </head>
   <body>
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-tXpPkAqRsW4oYdg6SMtG0CNB7YBzEA&libraries=places&callback=initMap" async defer></script>
+    <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
   </body>
 </html>

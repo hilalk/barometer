@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
     <title>Place searches</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -145,6 +146,18 @@
     </script>
   </head>
   <body>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAGinFKaPAfggVpedFtgLYXLN9tOmtHjhk",
+        authDomain: "barometer-4d159.firebaseapp.com",
+        databaseURL: "https://barometer-4d159.firebaseio.com",
+        projectId: "barometer-4d159",
+        storageBucket: "barometer-4d159.appspot.com",
+        messagingSenderId: "979199373746"
+      };
+      firebase.initializeApp(config);
+    </script>
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-tXpPkAqRsW4oYdg6SMtG0CNB7YBzEA&libraries=places&callback=initMap" async defer></script>
     <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
